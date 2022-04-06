@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'bsale.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE':'django.db.backends.mysql', 
+        'NAME':'bsale_test',
+        'USER':'bsale_test',
+        'PASSWORD':'bsale_test',
+        'HOST': 'mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com',
+        'CONN_MAX_AGE':60,
     }
 }
 
