@@ -2,7 +2,6 @@
     display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px;
-    background-color: aqua;
 }
 
 .div2{
@@ -25,7 +24,6 @@
     position: absolute;
 }
 
-.dropdown{
-    margin-left: 160px;
-    margin-top: 20px;
+#dropdown{
+    margin-bottom: 20px;
 }
