@@ -1,4 +1,4 @@
-const URL = 'https://app-bsaleapi.herokuapp.com/api/product/';
+const URL = 'http://localhost:8000/api/product/';
 
 //obtener id de dropdown
 const idCategory = document.getElementById('dropdown').addEventListener('change', (evt) => {
@@ -11,23 +11,17 @@ const idCategory = document.getElementById('dropdown').addEventListener('change'
 
 
 //CARGAR TODOS LOS PRODUCTOS ORDENADOS POR ID DE CATEGORIA
-const allProducts =async() => {
+const allProducts = async() => {
     try {
-        const a =await fetch(URL,
+        await fetch(URL,
             {
                 method: 'GET',
                 mode: 'cors',
                 credentials: 'same-origin',
-                headers:{
-                    'Content-type':'application/json'
+                headers: {
+                    'Content-type': 'application/json'
                 },
-            }).then(res => res.json()).then(data => {
-
-            if (data) {
-                const { results } = data;
-                getData(results);
-            }
-        }).catch(err => err)
+            }).then(res => res.json().then(data=>getData(data))).catch(err => err)
     } catch (error) {
         alert('Hubo un error', error)
     }
@@ -37,20 +31,14 @@ const allProducts =async() => {
 const productByCategory = async (param) => {
     if (param) {
         try {
-            await fetch(URL + `?category=${param}`,{
+            await fetch(URL + `?category=${param}`, {
                 method: 'GET',
                 mode: 'cors',
                 credentials: 'same-origin',
-                headers:{
-                    'Content-type':'application/json'
-                },}
-            ).then(res => res.json()).then(data => {
-                if (data) {
-                    const { results } = data;
-                    getData(results);
-
-                }
-            }).catch(err => err)
+                headers: {
+                    'Content-type': 'application/json'
+                },
+            }).then(res => res.json().then(data=>getData(data))).catch(err => err)
         } catch (error) {
             alert('Hubo un error', error)
         }
@@ -58,8 +46,8 @@ const productByCategory = async (param) => {
 }
 
 //Cargar la data en la pagina
-const getData = (param) => {
-
+const getData = async(param) => {
+    console.log(param)
     const container = document.getElementById('container');
 
     container.innerHTML = '';
