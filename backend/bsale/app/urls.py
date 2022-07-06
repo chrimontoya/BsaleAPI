@@ -5,8 +5,8 @@ from .views import CategoryViewSet,ProductViewSet
 
 #generador de rutas para la url ej: http://localhost:8000/api/product/
 router=routers.DefaultRouter()
-router.register('product',ProductViewSet)
-router.register('category',CategoryViewSet)
+router.register('products',ProductViewSet)
+router.register('categorys',CategoryViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),

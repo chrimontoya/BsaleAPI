@@ -1,5 +1,5 @@
-const URL = 'https://app-bsaleapi.herokuapp.com/api/product/';
-
+const URL = 'http://127.0.0.1:8000/api/products/';
+//https://app-bsaleapi.herokuapp.com/api/products/';
 //obtener id de dropdown
 const idCategory = document.getElementById('dropdown').addEventListener('change', (evt) => {
     let id = parseInt(evt.target.options[evt.target.selectedIndex].value)
@@ -31,7 +31,7 @@ const allProducts = async() => {
 const productByCategory = async (param) => {
     if (param) {
         try {
-            await fetch(URL + `?category=${param}`, {
+            await fetch(URL + `?categorys=${param}`, {
                 method: 'GET',
                 mode: 'cors',
                 credentials: 'same-origin',
@@ -47,7 +47,6 @@ const productByCategory = async (param) => {
 
 //Cargar la data en la pagina
 const getData = async(param) => {
-    console.log(param)
     const container = document.getElementById('container');
 
     container.innerHTML = '';
@@ -78,6 +77,24 @@ const getData = async(param) => {
         img[index].src = param[index].url_image
     }
 
+}
+
+const findProductByName =async()=>{
+    const name = document.getElementById('search').value;
+    if (name) {
+        try {
+            await fetch(URL + `?search=${name}`, {
+                method: 'GET',
+                mode: 'cors',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+            }).then(res => res.json().then(data=>getData(data))).catch(err => err)
+        } catch (error) {
+            alert('Hubo un error', error)
+        }
+    }
 }
 
 window.onload = () => allProducts();
