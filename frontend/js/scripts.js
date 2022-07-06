@@ -1,4 +1,4 @@
-const URL = 'http://127.0.0.1:8000/api/products/';
+const URL = 'https://app-bsaleapi.herokuapp.com/api/products/';
 //https://app-bsaleapi.herokuapp.com/api/products/';
 //obtener id de dropdown
 const idCategory = document.getElementById('dropdown').addEventListener('change', (evt) => {
