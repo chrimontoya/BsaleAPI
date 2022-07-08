@@ -1,29 +1,18 @@
 .container{
-    display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5px;
-}
-
-.div2{
-    background-color: blue;
-    width: 60%;
-    height: 100px;
-
-}
-.div3{
-    background-color: red;
-    width: 20%;
-    height: 100px;
-    
-}
-.div1{
-    background-color: green;
-    width: 20%;
-    height: 100%;
     display: flex;
-    position: absolute;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
-
 #dropdown{
     margin-bottom: 20px;
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.container > div {
+    margin: 10px;
 }
