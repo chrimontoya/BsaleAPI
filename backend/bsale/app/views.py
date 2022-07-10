@@ -18,7 +18,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         products=Product.objects.all().order_by('category')
-        category=self.request.GET.get('category')
+        category=self.request.GET.get('categorys')
 
         if category:
             products=products.filter(category=category)
